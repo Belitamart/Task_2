@@ -1,26 +1,26 @@
-const horizontal = [`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`];
-const vertical = [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];
-let option1 = ``;
-let option2 = ``;
-let option3 = ``;
-let option4 = ``;
-let option5 = ``;
-let option6 = ``;
-let option7 = ``;
-let option8 = ``;
+const horizontal = [`A`, `B`, `C`, `D`, `E`, `F`, `G`, `H`];    //массив по горизонтали
+const vertical = [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`];      //масив по вертикали
+let option1 = ``;                                               //вариант хода 1
+let option2 = ``;                                               //вариант хода 2
+let option3 = ``;                                               //вариант хода 3
+let option4 = ``;                                               //вариант хода 4
+let option5 = ``;                                               //вариант хода 5
+let option6 = ``;                                               //вариант хода 6
+let option7 = ``;                                               //вариант хода 7
+let option8 = ``;                                               //вариант хода 8
 
 function turnOptions() {
-    let inputForm__startPosition = document.getElementById(`inputForm__startPosition`).value;
+    let inputForm__startPosition = document.getElementById(`inputForm__startPosition`).value; //функция при нажатии на кнопку
 
-    let horizontalInputValue = inputForm__startPosition[0];
-    let verticalInputValue = inputForm__startPosition[1];
+    let horizontalInputValue = inputForm__startPosition[0];                //буквенные значения при вводе по горизонтали
+    let verticalInputValue = inputForm__startPosition[1];                  //числовые значения при вводе по вертикали
 
-    for (let optionCounter = 0; optionCounter < 8; optionCounter++) {
-        if (horizontal[optionCounter] == horizontalInputValue) {
+    for (let optionCounter = 0; optionCounter < 8; optionCounter++) {      //цикл с проверками для каждого варианта хода по горизонтали
+        if (horizontal[optionCounter] == horizontalInputValue) {           //сравнение введенного значения с элементом массива горизонтали
 
-            option1 = horizontal[(optionCounter - 1)];
-            if (option1 == undefined) {
-                option1 = ``;
+            option1 = horizontal[(optionCounter - 1)];                     //присваение 1 варианту хода буквенного значения
+            if (option1 == undefined) {                                    //проверка на определенность значения
+                option1 = ``;                                              //если значение не определено присваеваем пустое значение
             }
 
             option2 = horizontal[(optionCounter + 1)];
@@ -60,15 +60,15 @@ function turnOptions() {
             }
         }
     }
-    for (let optionCounter = 0; optionCounter < 8; optionCounter++) {
+    for (let optionCounter = 0; optionCounter < 8; optionCounter++) {       //цикл с проверками для каждого варианта хода по вертикали
 
-        if (vertical[optionCounter] == verticalInputValue) {
+        if (vertical[optionCounter] == verticalInputValue) {                //сравнение введенного значения с элементом массива вертикали
 
-            if (option1 == ``) {
-            } else if (verticalInputValue < 3) {
-                option1 = ``;
+            if (option1 == ``) {                                            //сравнение с пустым значением, если пусто, ничего не требуется
+            } else if (verticalInputValue < 3) {                            //так как фигура должна смещаться, то значение
+                option1 = ``;                                               //не должно выходить за рамки доски, в значение записываем пустую строку
             }
-            else option1 += vertical[(optionCounter - 2)];
+            else option1 += vertical[(optionCounter - 2)];                  //все условия пройдены, добавляем необходимое значение
 
             if (option2 == ``) {
             } else if (verticalInputValue < 3) {
@@ -114,7 +114,7 @@ function turnOptions() {
         }
     }
 
-    let result = option1 + ` ` + option2 + ` ` + option3 + ` ` + option4 + ` `
+    let result = option1 + ` ` + option2 + ` ` + option3 + ` ` + option4 + ` `      //объявляем результирующую переменную
         + option5 + ` ` + option6 + ` ` + option7 + ` ` + option8;
-    alert(`Возможные варианты хода: ${result}`);
+    alert(`Возможные варианты хода: ${result}`);                                    //сообщаем о возможных ходах
 }
